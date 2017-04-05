@@ -13,23 +13,24 @@ while still_playing:
     if tokenized_list[0] == 'q' or tokenized_list[0] == 'quit':
         still_playing = False
     else:
-        num1 = int(tokenized_list[1])
-        if len(tokenized_list) == 3:
-            num2 = int(tokenized_list[2])
+        numbers_list = tokenized_list[1:]
+        int_list = []
+        for item in numbers_list:
+            int_list.append(int(item))
         operator = tokenized_list[0]
         if operator == '+':
-            print add(num1, num2)
+            print add(int_list)
         elif operator == '-':
-            print subtract(num1, num2)
+            print subtract(int_list)
         elif operator == '*':
-            print multiply(num1, num2)
+            print multiply(int_list)
         elif operator == '/':
-            print divide(num1, num2)
+            print divide(int_list)
         elif operator == 'square':
-            print square(num1)
+            print square(int_list)
         elif operator == 'cube':
-            print cube(num1)
+            print cube(int_list)
         elif operator == 'pow':
-            print power(num1, num2)
+            print power(int_list)
         elif operator == 'mod':
-            print mod(num1, num2)
+            print mod(int_list)
