@@ -6,7 +6,9 @@ calculator program yourself in this file.
 
 from arithmetic import *
 
+
 def has_spaces(user_input):
+    """Checks to see if user input string contains spaces"""
     if ' ' in user_input:
         return True
     else:
@@ -28,6 +30,7 @@ def is_valid_operator(user_input):
     else:
         return False
 
+
 def is_valid_number(user_input):
     """Checks validity of user input numbers"""
     if has_spaces(user_input):
@@ -40,7 +43,7 @@ def is_valid_number(user_input):
                     return True
                 except ValueError:
                     return False
-            else: 
+            else:
                 return True
         except ValueError:
             return False
@@ -50,12 +53,13 @@ def is_valid_number(user_input):
 
 
 def is_valid(user_input):
-    """Is user input valid?"""
+    """Checks if both operator and numbers are valid"""
 
     if is_valid_operator(user_input) and is_valid_number(user_input):
         return True
     else:
         return False
+
 
 still_playing = True
 
@@ -89,4 +93,3 @@ while still_playing:
                 print power(int_list)
             elif operator == 'mod':
                 print mod(int_list)
-
