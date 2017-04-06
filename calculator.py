@@ -57,6 +57,12 @@ def is_valid(user_input):
         return False
 
 
+def my_reduce(function, iterable):
+    accum_value = iterable[0] # initialize the variable
+    for number in iterable[1:]:
+        accum_value = function(accum_value, number)
+    return accum_value
+
 still_playing = True
 
 while still_playing:
@@ -74,18 +80,18 @@ while still_playing:
                 int_list.append(int(item))
             operator = tokenized_list[0]
             if operator == '+':
-                print "{:.2f}".format(reduce(add, int_list))
+                print "{:.2f}".format(my_reduce(add, int_list))
             elif operator == '-':
-                print "{:.2f}".format(reduce(subtract, int_list))
+                print "{:.2f}".format(my_reduce(subtract, int_list))
             elif operator == '*':
-                print "{:.2f}".format(reduce(multiply, int_list))
+                print "{:.2f}".format(my_reduce(multiply, int_list))
             elif operator == '/':
-                print "{:.2f}".format(reduce(divide, int_list))
+                print "{:.2f}".format(my_reduce(divide, int_list))
             elif operator == 'square':
                 print "{:.2f}".format(square(int_list[0])) # Non reduce-able
             elif operator == 'cube':
                 print "{:.2f}".format(cube(int_list[0]))
             elif operator == 'pow':
-                print "{:.2f}".format(reduce(power, int_list))
+                print "{:.2f}".format(my_reduce(power, int_list))
             elif operator == 'mod':
-                print "{:.2f}".format(reduce(mod, int_list))
+                print "{:.2f}".format(my_reduce(mod, int_list))
