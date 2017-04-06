@@ -4,7 +4,7 @@ Using the arithmetic.py file from Calculator Part 1, create the
 calculator program yourself in this file.
 """
 
-from arithmetic import *
+from arithmetic1 import *
 
 
 def has_spaces(user_input):
@@ -35,18 +35,14 @@ def is_valid_number(user_input):
     """Checks validity of user input numbers"""
     if has_spaces(user_input):
         user_input_list = user_input.split(' ')
-        try:
-            int(user_input_list[1])
-            if len(user_input_list) == 3:
-                try:
-                    int(user_input_list[2])
+        for i in range(1, len(user_input_list)):
+            try:
+                int(user_input_list[i])
+                # Check if i is the last index in list
+                if i == len(user_input_list) - 1:
                     return True
-                except ValueError:
-                    return False
-            else:
-                return True
-        except ValueError:
-            return False
+            except ValueError:
+                return False
 
     else:
         return False
@@ -78,18 +74,18 @@ while still_playing:
                 int_list.append(int(item))
             operator = tokenized_list[0]
             if operator == '+':
-                print add(int_list)
+                print "{:.2f}".format(reduce(add, int_list))
             elif operator == '-':
-                print subtract(int_list)
+                print "{:.2f}".format(reduce(subtract, int_list))
             elif operator == '*':
-                print multiply(int_list)
+                print "{:.2f}".format(reduce(multiply, int_list))
             elif operator == '/':
-                print divide(int_list)
+                print "{:.2f}".format(reduce(divide, int_list))
             elif operator == 'square':
-                print square(int_list)
+                print "{:.2f}".format(square(int_list[0])) # Non reduce-able
             elif operator == 'cube':
-                print cube(int_list)
+                print "{:.2f}".format(cube(int_list[0]))
             elif operator == 'pow':
-                print power(int_list)
+                print "{:.2f}".format(reduce(power, int_list))
             elif operator == 'mod':
-                print mod(int_list)
+                print "{:.2f}".format(reduce(mod, int_list))
